@@ -1,14 +1,7 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from blog.models import Post
-# Create your views here.
-postdata = {
-    "blogs": [
-        {"id": 1, "title": "How to be a Good Programmer"}, 
-        {"id": 2, "title": "SQL Tutorial"},
-        {"id": 3, "title": "Django Tutorial"}
-    ]
-}
+# Create your views here. 
 
 def index (request):
     data = {"posts": Post.objects.all()}
