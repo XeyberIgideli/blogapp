@@ -3,8 +3,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.post_title {
+.header_title {
     color:bisque;
+}
+
+.text-center {
     text-align: center;
 }
 
@@ -21,7 +24,16 @@ p {
     color: rgb(200, 200, 200);
     font-size: 18px;
 }
-
+header ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+ul li {
+    color: rgb(200, 200, 200);
+    font-size: 18px;
+    list-style-type: none;
+}
 .container {
     width: 1000px;
     margin: 0 auto;
