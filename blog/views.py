@@ -19,6 +19,6 @@ def blog_details (request, post_slug):
 def blogs_by_category (request, category_slug): 
     # In Django, when you define a ForeignKey or a ManyToManyField relationship from one model to another, Django creates a manager on the related model to access related objects. 
     # The post_set is a manager that allows you to access all the Post objects related to a particular Category object.
-    data = Category.objects.get(slug = category_slug).post_set.filter(is_active = True) 
-    categories = Category.objects.all() 
+    # data = Category.objects.get(slug = category_slug).post_set.filter(is_active = True) 
+    data = Post.objects.filter(categories__slug = category_slug, is_active = True)  
     return render(request, 'blog/blogs.html', {**{"title": "Blogs"}, **{"posts":data}})

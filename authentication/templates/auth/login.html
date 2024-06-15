@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block blog_css %}
+<link rel="stylesheet" href="{% static 'auth/css/style.css' %}"> 
+{% endblock blog_css %}
+
+{% block content %} 
+<h1 class="header_title">Login </h1> 
+<div>
+    {% if error %}
+        <p>{{error}}</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+       <label>Username: </label> 
+       <input type="input" value="admin" name="username">
+
+       <label>Password: </label> 
+       <input type="password" value="123456789" name="password">
+
+        <button type="submit">Log In</button>
+    </form>
+
+</div>
+{% endblock %}    
+
+
+

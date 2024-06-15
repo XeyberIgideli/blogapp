@@ -1,0 +1,12 @@
+label {
+    color: white;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  
+    align-items:flex-start;
+}
+ 

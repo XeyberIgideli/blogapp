@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block blog_css %}
+<link rel="stylesheet" href="{% static 'blog/css/style.css' %}"> 
+{% endblock blog_css %}
 
 {% block content %} 
 {% include 'blog/partials/_categories.html' %} 

@@ -70,7 +70,9 @@ class PostAdmin(ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(ModelAdmin):
-    pass
+    search_fields = ['name',]
+    list_filter_submit = True
+    list_display = ['name'] 
 
 # class PostAdmin(admin.ModelAdmin):
 #     list_display = ('title', 'is_active', 'is_home', 'created_at', 'updated_at')

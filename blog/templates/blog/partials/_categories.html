@@ -1,5 +1,5 @@
 <div>
-    <h1>Blog Categories</h1> 
+    <h1 class="header_title">Blog Categories</h1> 
     <ul>
         {% for category in categories  %}
             <li><a href="{% url "blogs"%}/category/{{category.slug}}">{{category}}</a></li>
