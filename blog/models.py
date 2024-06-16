@@ -19,12 +19,12 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     body = RichTextField()
     image = models.ImageField(upload_to="blog", null=True)
-    slug = models.SlugField(null=False, blank=True, unique=True,editable=False, db_index=True) 
+    slug = models.SlugField(null=False, blank=True, unique=True,editable=False, db_index=True, error_messages={'unique': "A post with this slug already exists."}) 
     categories = models.ManyToManyField(Category, blank=True)
     is_active = models.BooleanField(default=True)
     is_home = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField 
     
     def __str__(self):
         return f"{self.title}" 
@@ -36,7 +36,8 @@ class Post(models.Model):
     def lowercase_title(self): 
         return self.title.lower()
     
-    def save(self, *args, **kwargs):  
-        self.slug = slugify(self.title) 
+    def save(self, *args, **kwargs):    
+        if not self.slug:
+            self.slug = slugify(self.title)
         super().save(*args, **kwargs) 
     

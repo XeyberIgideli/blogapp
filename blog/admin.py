@@ -18,6 +18,8 @@ from unfold.contrib.filters.admin import (
     FieldTextFilter,
 )
 
+from .forms import PostForm
+
 
 # Register your models here.
  
@@ -45,6 +47,8 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
  
 @admin.register(Post)
 class PostAdmin(ModelAdmin):
+        form = PostForm
+    
         search_fields = ['title','categories__name', 'is_active', 'is_home', 'created_at', 'updated_at']
         list_filter_submit = True
         list_display = ['title','category', 'is_active', 'is_home', 'created_at', 'updated_at'] 
@@ -52,7 +56,7 @@ class PostAdmin(ModelAdmin):
         ("created_at", RangeDateFilter), 
         ("categories__name", FieldTextFilter), 
          )
-        
+         
         def category(self, obj): 
             html = []
             
@@ -61,11 +65,7 @@ class PostAdmin(ModelAdmin):
             if html == []:
                 return "None"
             return html     
-
-        # def get_form(self, request, obj=None, change=False, **kwargs):
-        #     form = super().get_form(request, obj, change, **kwargs) 
-        #     form.base_fields["color"].widget = UnfoldAdminColorInputWidget()
-        #     return form
+ 
 
 @admin.register(Category)
 class CategoryAdmin(ModelAdmin):
