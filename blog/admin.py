@@ -1,7 +1,6 @@
 from django.contrib import admin
 
 from blog.models import Category, Post
-
 from unfold.admin import ModelAdmin
 from unfold.decorators import action, display
 from django.utils.translation import gettext_lazy as _

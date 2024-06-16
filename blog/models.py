@@ -29,6 +29,13 @@ class Post(models.Model):
     def __str__(self):
         return f"{self.title}" 
     
+    @property
+    def uppercase_title(self):
+        return self.title.upper()
+    
+    def lowercase_title(self): 
+        return self.title.lower()
+    
     def save(self, *args, **kwargs):  
         self.slug = slugify(self.title) 
         super().save(*args, **kwargs) 

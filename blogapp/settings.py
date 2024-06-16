@@ -16,7 +16,9 @@ from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from datetime import timedelta
 
+TOKEN_EXPIRY = timedelta(hours=1) 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -27,13 +29,13 @@ SECRET_KEY = 'django-insecure-gsyfv!)5=7*h=lgf9#wc%-e&qt0$6wgif=jqy3+x)+umrbd_ft
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+APPEND_SLASH = True
 # Application definition
 
 INSTALLED_APPS = [
     'blog', 
     "authentication",
+    "restdrf",
     "unfold",
     "unfold.contrib.filters",
     "unfold.contrib.forms", 
@@ -43,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', 
-    'ckeditor',
+    'ckeditor', 
+    "rest_framework",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [

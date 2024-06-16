@@ -4,9 +4,8 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def register_view(request):
-    if User.is_authenticated:
-        return redirect('home')
-    
+    if request.user.is_authenticated:
+         return redirect('home')
     try:
         email = request.POST['email']
         username = request.POST['username']
@@ -28,8 +27,8 @@ def register_view(request):
         return render(request, 'auth/register.html', {})
 
 def login_view(request):  
-    if User.is_authenticated:
-        return redirect('home')
+    if request.user.is_authenticated:
+            return redirect('home')
     
     try:
         username = request.POST['username']
